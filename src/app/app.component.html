@@ -1,6 +1,8 @@
-<h1>{{data1}}</h1>
-<input [(ngModel)]="data2"  type="text">
-<p>{{data2}}</p>
-<h2 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h2>
-<h3 [class.blue-color]="isActive">Class Bonding</h3>
-<button class="btn" (click)="printName()">EventBinding</button>
+<div class="container">
+  <h1>{{data1}}</h1>
+  <input [(ngModel)]="data2"  type="text">
+  <p>{{data2}}</p>
+  <h2 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h2>
+  <h3 [class.blue-color]="isActive">Class Bonding</h3>
+  <button class="btn btn-primary" (click)="printName()">EventBinding</button>
+</div>
