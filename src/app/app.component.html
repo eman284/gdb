@@ -1,6 +1,8 @@
 <div class="container">
   <h1>{{data1}}</h1>
-  <input [(ngModel)]="data2"  type="text">
+  <input value="user name"  type="text">
+  <input value="{{data2}}"  type="text">
+  <input  [(ngModel)]="data2"  type="text">
   <p>{{data2}}</p>
   <h2 [style.color]="isActive ? 'green' : 'blue'">Style Binding</h2>
   <h3 [class.blue-color]="isActive">Class Bonding</h3>
