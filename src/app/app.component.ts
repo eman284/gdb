@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'firstApp';
+  data1 = 'One way binding';
+  data2 = 'Two way binding';
+  isActive = true;
+
+  printName():void{
+      console.log('event binding ^_^')
+  }
 }
