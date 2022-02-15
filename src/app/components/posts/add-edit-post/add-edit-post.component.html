@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{post?.id ? 'Edit' : 'Create'}} Post </h4>
+    <button (click)="activeModal.close()" aria-label="Close" class="close" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="postForm">
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input class="form-control" formControlName="title" id="title"  placeholder="Enter title">
+      </div>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea class="form-control" formControlName="body" id="body"
+                  placeholder="Enter body" rows="2"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="createEditPost()" class="btn btn-primary px-4 py-2" type="button">
+      {{post?.id ? 'Edit' : 'Create'}}
+    </button>
+  </div>
+  

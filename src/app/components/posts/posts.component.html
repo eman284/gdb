@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-12 mb-4 d-flex">
+    <button class="btn btn-primary ml-auto px-4" (click)="addEditPost()">Add</button>
+  </div>
+  <div class="col-md-4 mb-4" *ngFor="let post of postItems; let i =index;">
+    <div class="card">
+      <div class="card-header">
+        {{post?.title | truncate:25}}
+      </div>
+      <div class="card-body">
+        {{post?.body | truncate:50}}
+        <a class="text-underline" [routerLink]="['/post/details',post?.id]">Read more</a>
+      </div>
+      <div class="card-footer text-right">
+        <a class="text-success mr-4"(click)="addEditPost(post,i)"><i class="fa fa-edit mr-1"></i>edit</a>
+        <a class="text-danger" (click)="deletePost(post?.id,i)"><i class="fa fa-trash mr-1"></i>delete</a>
+      </div>
+    </div>
+  </div>
+</div>
