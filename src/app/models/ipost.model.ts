@@ -5,8 +5,7 @@ ng g interface  models/Ipost --type=model
 
 // we use interface 
 export interface Ipost {
-    userId?:number;
-    id?:number;
+    id?:string;
     title?:string;
     body?:string;
 }

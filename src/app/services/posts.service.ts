@@ -13,22 +13,22 @@ export class PostsService {
    }
   
    getAllPosts():Observable<Ipost[]> {
-     return this.http.get<Ipost[]>(`${environment.apiUrl}/posts`)
+     return this.http.get<Ipost[]>(`${environment.apiUrl}/post`)
    }
 
-   getPostById(id:number):Observable<Ipost>{
-     return this.http.get<Ipost>(`${environment.apiUrl}/posts/${id}`)
+   getPostById(id:string):Observable<Ipost>{
+     return this.http.get<Ipost>(`${environment.apiUrl}/post/${id}`)
    }
 
    addPost(post:Ipost):Observable<Ipost>{
-     return this.http.post<Ipost>(`${environment.apiUrl}/posts`,JSON.stringify(post))
+     return this.http.post<Ipost>(`${environment.apiUrl}/post`,post)
    }
-   updatePost(id:number,post:Ipost):Observable<Ipost>{
-    return this.http.put<Ipost>(`${environment.apiUrl}/posts/${id}`,JSON.stringify(post))
+   updatePost(id:string,post:Ipost):Observable<Ipost>{
+    return this.http.put<Ipost>(`${environment.apiUrl}/post`,post)
   }
 
-   delete(id:number){
-      return this.http.delete(`${environment.apiUrl}/posts/${id}`)
+   delete(id:string){
+      return this.http.delete(`${environment.apiUrl}/post/${id}`)
    }
 
 }

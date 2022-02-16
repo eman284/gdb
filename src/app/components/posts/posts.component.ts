@@ -42,10 +42,10 @@ export class PostsComponent implements OnInit {
   }
 
   // delete post method
-   deletePost(postId:number,index:number):void{
+   deletePost(postId:string,index:number):void{
       this.postService.delete(postId).subscribe(()=>{
         this.postItems?.splice(index,1);
-        //this.getAllPosts();
+        this.getAllPosts();
       })
    }
 
