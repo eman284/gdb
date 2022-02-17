@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddEditPostComponent } from './components/posts/add-edit-post/add-edit-post.component';
 import { GdbModule } from './gdb/gdb.module';
 import { CopmonentOneComponent } from './components/copmonent-one/copmonent-one.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { CopmonentOneComponent } from './components/copmonent-one/copmonent-one.
     NgbModule,
     GdbModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

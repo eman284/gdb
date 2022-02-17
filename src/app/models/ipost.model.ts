@@ -8,4 +8,6 @@ export interface Ipost {
     id?:string;
     title?:string;
     body?:string;
+    date?:Date;
+    isRead?:boolean;
 }

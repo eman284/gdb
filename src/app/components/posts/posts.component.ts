@@ -32,13 +32,20 @@ export class PostsComponent implements OnInit {
     const closeSubscription = modal.closed.subscribe((updatePost: Ipost) => {
       if(updatePost){
         if(typeof index === 'number'){
-          this.postItems?.splice(index,1,updatePost)
+          this.postItems?.splice(index,1,updatePost);
         }else{
           this.postItems?.push(updatePost);
+          this.getAllPosts();
         }
       }
       closeSubscription.unsubscribe();
     });
+  }
+  readMore(id?:string, post?:Ipost){
+    const UpdateStatus = {...post , isRead:true}
+    this.postService.updatePost(id,UpdateStatus).subscribe(()=>{
+      console.log('update success')
+    })
   }
 
   // delete post method

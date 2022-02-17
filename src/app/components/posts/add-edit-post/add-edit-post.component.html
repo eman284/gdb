@@ -1,25 +1,41 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{post?.id ? 'Edit' : 'Create'}} Post </h4>
-    <button (click)="activeModal.close()" aria-label="Close" class="close" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="postForm">
-      <div class="form-group">
-        <label for="name">Title</label>
-        <input class="form-control" formControlName="title" id="title"  placeholder="Enter title">
+  <h4 class="modal-title">{{post?.id ? 'Edit' : 'Create'}} Post </h4>
+  <button (click)="activeModal.close()" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="postForm" novalidate [ngClass]="{
+      'has-danger': (this.postForm.controls['title'] || this.postForm.controls['body']).invalid && ((this.postForm.controls['title'] || this.postForm.controls['body']).dirty || (this.postForm.controls['title'] || this.postForm.controls['body']).touched),
+      'has-success': (this.postForm.controls['title'] || this.postForm.controls['body']).valid && ((this.postForm.controls['title'] || this.postForm.controls['body']).dirty || (this.postForm.controls['title'] || this.postForm.controls['body']).touched)
+    }">
+    <div class="form-group">
+      <label for="name">Date</label>
+      <input class="form-control" formControlName="date" id="date" readonly>
+    </div>
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input class="form-control" formControlName="title" id="title" placeholder="Enter title">
+      <div class="form-control-feedback"
+        *ngIf="this.postForm.controls['title'].errors && (this.postForm.controls['title'].dirty || this.postForm.controls['title'].touched)">
+        <p *ngIf="this.postForm.controls['title'].errors['required']">Title is required</p>
       </div>
-      <div class="form-group">
-        <label for="body">Body</label>
-        <textarea class="form-control" formControlName="body" id="body"
-                  placeholder="Enter body" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" formControlName="body" id="body" placeholder="Enter body" rows="5"></textarea>
+
+      <div class="form-control-feedback"
+        *ngIf="this.postForm.controls['body'].errors && (this.postForm.controls['body'].dirty || this.postForm.controls['body'].touched)">
+        <p *ngIf="this.postForm.controls['body'].errors">Title is required</p>
       </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button (click)="createEditPost()" class="btn btn-primary px-4 py-2" type="button">
-      {{post?.id ? 'Edit' : 'Create'}}
-    </button>
-  </div>
-  
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="createEditPost()" class="btn btn-primary px-4 py-2" type="button" [disabled]="postForm.invalid">
+    <!-- [ngClass]="condition ? 'checkedClass' : 'uncheckedClass'" -->
+    <i class="fa mr-1" [ngClass]="post?.id ? 'fa-edit' : 'fa-save'"></i>
+    {{post?.id ? 'Edit' : 'Create'}}
+  </button>
+</div>

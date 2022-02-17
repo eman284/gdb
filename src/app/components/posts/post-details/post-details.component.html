@@ -1,7 +1,10 @@
-
 <div class="details">
-<h1 class="details-title">{{post?.title}}</h1>
-<p class="details-body">
-    {{post?.body}}
-</p>
+    <h4 class="details-title">{{post?.title}}</h4>
+    <label class="text-info">
+    <i class="fa fa-calendar-alt"></i>
+    {{post?.date | date:'shortDate'}}
+</label>
+    <p class="details-body">
+        {{post?.body}}
+    </p>
 </div>
